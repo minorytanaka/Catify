@@ -9,9 +9,9 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = os.getenv('SECRET_KEY', True)
+SECRET_KEY = os.getenv('SECRET_KEY', 'SECRET_KEY')
 DEBUG = os.getenv('DEBUG', True) == 'True'
-ALLOWED_HOSTS = ['kittygramx.ddns.net', '51.250.101.61', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'kittygramx.ddns.net').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -89,13 +89,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = os.getenv('TIME_ZONE', 'UTC')
 
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
+USE_I18N = os.getenv('USE_I18N', True) == 'True'
+USE_L10N = os.getenv('USE_L10N', True) == 'True'
+USE_TZ = os.getenv('USE_TZ', True) == 'True'
 
 
 STATIC_URL = '/static/'
